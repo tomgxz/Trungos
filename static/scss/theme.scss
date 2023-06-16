@@ -13,6 +13,9 @@ $success: #10a103;
 $warning: #f7c104;
 $danger: #e92500;
 
+$btn-border-radius: 0;
+$btn-border-width: 2px;
+
 @font-face {
     font-family: Philosopher;
     src:local(".\\static\\font\\Philosopher-Regular.ttf");
