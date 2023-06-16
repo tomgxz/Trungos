@@ -1,3 +1,5 @@
 *.bat
 /static/bootstrap
 /static/font
+.replit
+replit.nix
