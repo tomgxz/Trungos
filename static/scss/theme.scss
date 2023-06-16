@@ -1,0 +1,136 @@
+@import "../bootstrap/scss/functions";
+
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+$white: #ffffff;
+
+$light: #fff9de;
+$dark: #0a0f0a;
+$primary: #163a01;
+$secondary: #da4928;
+$info: #7a9f65;
+$success: #10a103;
+$warning: #f7c104;
+$danger: #e92500;
+
+@font-face {
+    font-family: Philosopher;
+    src:local(".\\static\\font\\Philosopher-Regular.ttf");
+}
+
+$font-family-base: "Philosopher";
+
+@import "../bootstrap/scss/bootstrap";
+
+.nav-link .fa-icon {
+    font-size:24px;
+}
+
+.nav-link .nav-link-image {
+    width:24px;
+    height:24px;   
+}
+
+.nav-link .nav-link-content {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+}
+
+.nav-link .nav-link-content::before {
+    content: "";
+    position: absolute;
+    background-color: var(--bs-primary);
+    height:2px;
+    width:100%;
+    bottom: 0;
+    left:50%;
+    transform-origin: 0% 50%;
+    transform: scaleX(0) translateX(-50%);
+    transition: transform 350ms cubic-bezier(0.76, 0, 0.24, 1);
+    border-radius: 1em;
+}
+
+.nav-link.nav-link-underline-title .nav-link-content::before {
+    left:0;
+    transition: transform 350ms cubic-bezier(0.76, 0, 0.24, 1), width 350ms cubic-bezier(0.76, 0, 0.24, 1);
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: 100% 0%;
+    bottom:10%;
+}
+
+.nav-link.nav-link-underline-title:hover .nav-link-content::before {
+    width:100%;
+    transform: scaleX(1);
+}
+
+.nav-link.strong .nav-link-content::before {
+    height:3px;
+}
+
+.nav-link:hover .nav-link-content::before {
+    transform-origin: 0% 50%;
+    transform: scaleX(1) translateX(-50%);
+}
+
+.surround-forks::before,
+.surround-forks::after {
+    display:inline-block;
+    width:50px;
+}
+
+.surround-forks::before {
+    content:url(../img/fork/fork-green.svg);
+    margin-right:.25em;
+}
+
+
+.surround-forks::after {
+    content:url(../img/fork/fork-green-reverse.svg);
+    margin-left:.25em;
+}
+
+.surround-forks.surround-forks-orange::before {
+    content:url(../img/fork/fork-orange.svg);
+}
+
+.surround-forks.surround-forks-orange::after {
+    content:url(../img/fork/fork-orange-reverse.svg);
+}
+
+.huge-text {
+    font-size:6rem;
+    filter: drop-shadow(0px 6px 8px rgba(0,0,0,0.4));
+}
+
+.huge-text-t {
+    font-size:8.5rem
+}
+
+.main-image-background {
+    background-image:var(--img-url);
+    background-position:var(--img-pos,center);
+    background-size:cover;
+}
+
+.cover-container {
+    height:85vh!important;
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.fade-to::after {
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:228px;
+}
+
+.fade-to.fade-to-white::after {
+    background-image: linear-gradient(to bottom, transparent, var(--bs-white))
+}
