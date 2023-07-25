@@ -78,15 +78,40 @@ function createImageFade(img1,img2) {
 
     if (current+1 == urls.length) current=-1
 
-    if (img1visible) img2.setAttribute("src",urls[current+1])
-    else img1.setAttribute("src",urls[current+1])
-
     if (img1visible) {
-        gsap.to(img2,{autoAlpha:1,duration:1,ease:"power1.easeInOut",onStart:img2.removeAttribute("aria-hidden")})
-        gsap.to(img1,{autoAlpha:0,duration:1,ease:"power1.easeInOut",onComplete:img1.setAttribute("aria-hidden","true")})
+
+        gsap.to(img2,{
+            autoAlpha:1,
+            duration:1,
+            ease:"power1.easeInOut",
+            onStart:img2.removeAttribute("aria-hidden"),
+            onComplete:img2.setAttribute("src",urls[current+1])
+        })
+
+        gsap.to(img1,{
+            autoAlpha:0,
+            duration:1,
+            ease:"power1.easeInOut",
+            onComplete:img1.setAttribute("aria-hidden","true")
+        })
+
     } else {
-        gsap.to(img1,{autoAlpha:1,duration:1,ease:"power1.easeInOut",onStart:img1.removeAttribute("aria-hidden")})
-        gsap.to(img2,{autoAlpha:0,duration:1,ease:"power1.easeInOut",onComplete:img2.setAttribute("aria-hidden","true")})
+
+        gsap.to(img1,{
+            autoAlpha:1,
+            duration:1,
+            ease:"power1.easeInOut",
+            onStart:img1.removeAttribute("aria-hidden"),
+            onComplete:img1.setAttribute("src",urls[current+1])
+        })
+
+        gsap.to(img2,{
+            autoAlpha:0,
+            duration:1,
+            ease:"power1.easeInOut",
+            onComplete:img2.setAttribute("aria-hidden","true")
+        })
+    
     }
 }
 
