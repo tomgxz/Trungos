@@ -1,5 +1,15 @@
 gsap.registerPlugin(ScrollTrigger)
 
+function preloadImages(images) {
+    for (i = 0; i < images.length; i++) {
+        let l = document.createElement('link')
+        l.rel = 'preload'
+        l.as = 'image'
+        l.href = images[i]
+        document.head.appendChild(l)
+    }
+}
+
 function updateImages() {
     document.querySelectorAll(".image-fadethru-container .image-fadethru-tocheck").forEach((e)=>{
         var parent = e.parentElement
@@ -116,7 +126,10 @@ function createImageFade(img1,img2) {
 }
 
 function createImages() {
-    document.querySelectorAll(".image-fadethru-container .image-fadethru").forEach(createImage)
+    document.querySelectorAll(".image-fadethru-container .image-fadethru").forEach((e) => {
+        createImage(e)
+        preloadImages(e.getAttribute("data-fadethru-images").split(","))
+    })
     addEventListener("resize",updateImages)
 }
 
